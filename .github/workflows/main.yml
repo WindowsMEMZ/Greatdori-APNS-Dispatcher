@@ -19,4 +19,9 @@ jobs:
           mkdir build
           xcodebuild -project Greatdori-APNS-Dispatcher.xcodeproj -scheme Greatdori-APNS-Dispatcher -configuration Release -derivedDataPath ./build build
       - name: Run
+        env:
+          TOKEN_LIST_PWD: ${{ secrets.TOKEN_LIST_PWD }}
+          APNS_PRIVATE_KEY: ${{ secrets.APNS_PRIVATE_KEY }}
+          APNS_KEY_ID: ${{ secrets.APNS_KEY_ID }}
+          APNS_TEAM_ID: ${{ secrets.APNS_TEAM_ID }}
         run: ./build/Build/Products/Release/Greatdori-APNS-Dispatcher
