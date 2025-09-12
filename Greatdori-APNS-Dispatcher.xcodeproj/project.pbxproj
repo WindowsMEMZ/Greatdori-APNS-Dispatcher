@@ -344,7 +344,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					./,
-					PackageFrameworks/,
+					./PackageFrameworks/,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -363,7 +363,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					./,
-					PackageFrameworks/,
+					./PackageFrameworks/,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
