@@ -52,44 +52,58 @@ let apnsClient = APNSClient(
 for token in tokens {
     for news in newsDiff {
         LimitedTaskQueue.shared.addTask {
+            let typeString = switch news.type {
+            case .article: "article"
+            case .song: "song"
+            case .loginCampaign: "loginCampaign"
+            case .event: "event"
+            case .gacha: "gacha"
+            @unknown default: fatalError()
+            }
             let notifBody: APNSAlertNotificationContent.StringValue? = switch news.timeMark {
-            case .willStartAfter(let interval):
-                if interval == 1 {
-                    .localized(key: "News.time-mark.will-start-after.one", arguments: ["\(interval)"])
+            case .hasEnded:
+                if let locale = news.locale {
+                    .localized(key: "Notif.news.\(typeString).time-mark.has-ended.with-locale", arguments: [locale.rawValue.uppercased()])
                 } else {
-                    .localized(key: "News.time-mark.will-start-after.other", arguments: ["\(interval)"])
+                    .localized(key: "Notif.news.\(typeString).time-mark.has-ended", arguments: [])
                 }
-            case .willEndAfter(let interval):
-                if interval == 1 {
-                    .localized(key: "News.time-mark.will-end-after.one", arguments: ["\(interval)"])
+            case .hasPublished:
+                if let locale = news.locale {
+                    .localized(key: "Notif.news.\(typeString).time-mark.has-published.with-locale", arguments: [locale.rawValue.uppercased()])
                 } else {
-                    .localized(key: "News.time-mark.will-end-after.other", arguments: ["\(interval)"])
+                    .localized(key: "Notif.news.\(typeString).time-mark.has-published", arguments: [])
+                }
+            case .willStartToday:
+                if let locale = news.locale {
+                    .localized(key: "Notif.news.\(typeString).time-mark.will-start-today.with-locale", arguments: [locale.rawValue.uppercased()])
+                } else {
+                    .localized(key: "Notif.news.\(typeString).time-mark.will-start-today", arguments: [])
                 }
             case .willEndToday:
-                    .localized(key: "News.time-mark.will-end-today", arguments: [])
-            case .hasEnded:
-                    .localized(key: "News.time-mark.has-ended", arguments: [])
-            case .hasPublished:
-                    .localized(key: "News.time-mark.has-published", arguments: [])
-            case .willStartToday:
-                    .localized(key: "News.time-mark.will-start-today", arguments: [])
-            @unknown default: nil
+                if let locale = news.locale {
+                    .localized(key: "Notif.news.\(typeString).time-mark.will-end-today.with-locale", arguments: [locale.rawValue.uppercased()])
+                } else {
+                    .localized(key: "Notif.news.\(typeString).time-mark.will-end-today", arguments: [])
+                }
+            default: nil
             }
-            _ = try? await apnsClient.sendAlertNotification(
-                .init(
-                    alert: .init(
-                        title: .raw(news.subject),
-                        body: notifBody
+            if let notifBody {
+                _ = try? await apnsClient.sendAlertNotification(
+                    .init(
+                        alert: .init(
+                            title: .raw(news.subject),
+                            body: notifBody
+                        ),
+                        expiration: .immediately,
+                        priority: .consideringDevicePower,
+                        topic: "com.memz233.Greatdori",
+                        payload: NotificationPayload(),
+                        badge: newsDiff.count,
+                        sound: .default
                     ),
-                    expiration: .immediately,
-                    priority: .consideringDevicePower,
-                    topic: "com.memz233.Greatdori",
-                    payload: NotificationPayload(),
-                    badge: newsDiff.count,
-                    sound: .default
-                ),
-                deviceToken: token
-            )
+                    deviceToken: token
+                )
+            }
         }
     }
 }
