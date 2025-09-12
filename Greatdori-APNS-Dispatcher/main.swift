@@ -54,9 +54,17 @@ for token in tokens {
         LimitedTaskQueue.shared.addTask {
             let notifBody: APNSAlertNotificationContent.StringValue? = switch news.timeMark {
             case .willStartAfter(let interval):
-                    .localized(key: "News.time-mark.will-start-after.%lld", arguments: ["\(interval)"])
+                if interval == 1 {
+                    .localized(key: "News.time-mark.will-start-after.one", arguments: ["\(interval)"])
+                } else {
+                    .localized(key: "News.time-mark.will-start-after.other", arguments: ["\(interval)"])
+                }
             case .willEndAfter(let interval):
-                    .localized(key: "News.time-mark.will-end-after.%lld", arguments: ["\(interval)"])
+                if interval == 1 {
+                    .localized(key: "News.time-mark.will-end-after.one", arguments: ["\(interval)"])
+                } else {
+                    .localized(key: "News.time-mark.will-end-after.other", arguments: ["\(interval)"])
+                }
             case .willEndToday:
                     .localized(key: "News.time-mark.will-end-today", arguments: [])
             case .hasEnded:
@@ -76,7 +84,9 @@ for token in tokens {
                     expiration: .immediately,
                     priority: .consideringDevicePower,
                     topic: "com.memz233.Greatdori",
-                    payload: NotificationPayload()
+                    payload: NotificationPayload(),
+                    badge: newsDiff.count,
+                    sound: .default
                 ),
                 deviceToken: token
             )
