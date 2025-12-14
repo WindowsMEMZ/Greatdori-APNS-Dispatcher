@@ -13,11 +13,10 @@ jobs:
       - name: Create build folder
         run: mkdir build
       - name: Restore build cache
-        id: cache-npm
         uses: actions/cache@v4
         with:
           path: ./build
-          key: ${{ runner.os }}-build-cache
+          key: dispatcher-build-cache
       - name: Build
         run: xcodebuild -project Greatdori-APNS-Dispatcher.xcodeproj -scheme Greatdori-APNS-Dispatcher -configuration Release -derivedDataPath ./build build -quiet -skipPackagePluginValidation -skipMacroValidation
       - name: Run
