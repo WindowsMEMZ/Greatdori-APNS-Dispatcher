@@ -8,28 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		8C088F222E72E37200447B05 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C088F202E72E37200447B05 /* main.swift */; };
-		8C088FCA2E72E42F00447B05 /* DoriKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C088FB82E72E41700447B05 /* DoriKit.framework */; };
-		8C088FCB2E72E42F00447B05 /* DoriKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C088FB82E72E41700447B05 /* DoriKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8C088FD22E72E4D200447B05 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 8C088FD12E72E4D200447B05 /* SwiftyJSON */; };
 		8C088FD52E72EFEB00447B05 /* APNS in Frameworks */ = {isa = PBXBuildFile; productRef = 8C088FD42E72EFEB00447B05 /* APNS */; };
+		8C71D0B72EEF0B7800E8645B /* DoriKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C71D0B62EEF0B7800E8645B /* DoriKit.framework */; };
+		8C71D0B82EEF0B7800E8645B /* DoriKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C71D0B62EEF0B7800E8645B /* DoriKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8C0856172E73086300447B05 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C088F232E72E41700447B05 /* Greatdori.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8C0C99902E296A8C00549B5C;
-			remoteInfo = DoriKit;
-		};
-		8C088FB72E72E41700447B05 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C088F232E72E41700447B05 /* Greatdori.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8C0C99912E296A8C00549B5C;
-			remoteInfo = DoriKit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8C088F142E72E36D00447B05 /* CopyFiles */ = {
@@ -41,13 +24,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		8C088FCC2E72E42F00447B05 /* Embed Frameworks */ = {
+		8C71D0B92EEF0B7800E8645B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8C088FCB2E72E42F00447B05 /* DoriKit.framework in Embed Frameworks */,
+				8C71D0B82EEF0B7800E8645B /* DoriKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,7 +40,7 @@
 /* Begin PBXFileReference section */
 		8C088F162E72E36D00447B05 /* Greatdori-APNS-Dispatcher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Greatdori-APNS-Dispatcher"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C088F202E72E37200447B05 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		8C088F232E72E41700447B05 /* Greatdori.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Greatdori.xcodeproj; path = Greatdori/Greatdori.xcodeproj; sourceTree = "<group>"; };
+		8C71D0B62EEF0B7800E8645B /* DoriKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DoriKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C71D0B72EEF0B7800E8645B /* DoriKit.framework in Frameworks */,
 				8C088FD22E72E4D200447B05 /* SwiftyJSON in Frameworks */,
 				8C088FD52E72EFEB00447B05 /* APNS in Frameworks */,
-				8C088FCA2E72E42F00447B05 /* DoriKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +60,6 @@
 		8C088F0D2E72E36D00447B05 = {
 			isa = PBXGroup;
 			children = (
-				8C088F232E72E41700447B05 /* Greatdori.xcodeproj */,
 				8C088F212E72E37200447B05 /* Greatdori-APNS-Dispatcher */,
 				8C088FC92E72E42F00447B05 /* Frameworks */,
 				8C088F172E72E36D00447B05 /* Products */,
@@ -100,17 +82,10 @@
 			path = "Greatdori-APNS-Dispatcher";
 			sourceTree = "<group>";
 		};
-		8C088F242E72E41700447B05 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8C088FB82E72E41700447B05 /* DoriKit.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		8C088FC92E72E42F00447B05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C71D0B62EEF0B7800E8645B /* DoriKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -125,12 +100,11 @@
 				8C088F122E72E36D00447B05 /* Sources */,
 				8C088F132E72E36D00447B05 /* Frameworks */,
 				8C088F142E72E36D00447B05 /* CopyFiles */,
-				8C088FCC2E72E42F00447B05 /* Embed Frameworks */,
+				8C71D0B92EEF0B7800E8645B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8C0856182E73086300447B05 /* PBXTargetDependency */,
 			);
 			name = "Greatdori-APNS-Dispatcher";
 			packageProductDependencies = (
@@ -172,28 +146,12 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8C088F172E72E36D00447B05 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8C088F242E72E41700447B05 /* Products */;
-					ProjectRef = 8C088F232E72E41700447B05 /* Greatdori.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				8C088F152E72E36D00447B05 /* Greatdori-APNS-Dispatcher */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8C088FB82E72E41700447B05 /* DoriKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DoriKit.framework;
-			remoteRef = 8C088FB72E72E41700447B05 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8C088F122E72E36D00447B05 /* Sources */ = {
@@ -205,14 +163,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8C0856182E73086300447B05 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DoriKit;
-			targetProxy = 8C0856172E73086300447B05 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8C088F1B2E72E36D00447B05 /* Debug */ = {
