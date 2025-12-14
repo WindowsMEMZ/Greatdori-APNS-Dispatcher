@@ -22,7 +22,8 @@ jobs:
           submodules: recursive
       - name: Generate workspace
         run: |
-          cat <<EOF > Dispatcher.xcworkspace
+          mkdir Dispatcher.xcworkspace
+          cat <<EOF > Dispatcher.xcworkspace/contents.xcworkspacedata
           <?xml version="1.0" encoding="UTF-8"?>                                                    
           <Workspace
              version = "1.0">
