@@ -14,7 +14,7 @@ import CryptoKit
 import Foundation
 import SwiftyJSON
 
-let dateResponse = try! JSON(data: urlData("https://api.push.greatdori.memz.top/datemeta/updated/get"))
+let dateResponse = try! JSON(data: urlData("https://api.push.greatdori.com/datemeta/updated/get"))
 let timestamp = dateResponse["timestamp"].double!
 if timestamp < 100 { fatalError("Timestamp is too low") }
 
@@ -23,14 +23,14 @@ let newsDiff = latestNews.prefix { item in
     item.timestamp.timeIntervalSince1970 > timestamp
 }
 
-_ = urlData("https://api.push.greatdori.memz.top/datemeta/updated/set/\(Date.now.timeIntervalSince1970)")
+_ = urlData("https://api.push.greatdori.com/datemeta/updated/set/\(Date.now.timeIntervalSince1970)")
 
 guard !newsDiff.isEmpty else {
     print("No new news, exiting")
     exit(0)
 }
 
-let tokensResponse = try! JSON(data: urlData("https://api.push.greatdori.memz.top/listAll"))
+let tokensResponse = try! JSON(data: urlData("https://api.push.greatdori.com/listAll"))
 let tokens = tokensResponse["tokens"].compactMap {
     decryptDeviceToken($0.1.stringValue, secret: ProcessInfo.processInfo.environment["TOKEN_LIST_PWD"]!)
 }
